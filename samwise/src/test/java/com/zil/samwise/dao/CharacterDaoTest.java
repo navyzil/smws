@@ -1,0 +1,32 @@
+package com.zil.samwise.dao;
+
+import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.empty;
+
+import java.util.List;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+
+import com.zil.samwise.dao.CharacterDao;
+import com.zil.samwise.model.Character;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("classpath:/applicationContext.xml")
+@TransactionConfiguration(defaultRollback=true)
+public class CharacterDaoTest {
+
+	@Autowired
+	CharacterDao characterDao;
+	
+	@Test
+	public void listAllCharacters() {
+		List<Character> showAllCharacters = characterDao.showAllCharacters();
+		assertThat(showAllCharacters, empty());
+	}
+
+}
