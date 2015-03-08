@@ -24,8 +24,8 @@ limitations under the License. -->
   <properties>
     <hibernate.version>4.2.0.Final</hibernate.version>
 	<mysql.connector.version>5.1.21</mysql.connector.version>
-	<spring.version>3.2.2.RELEASE</spring.version>
-	<spring.security.version>3.1.4.RELEASE</spring.security.version>
+	<spring.version>3.2.8.RELEASE</spring.version>
+	<spring.security.version>3.2.2.RELEASE</spring.security.version>
 	<org.aspectj-version>1.7.4</org.aspectj-version>
 	<org.slf4j-version>1.7.5</org.slf4j-version>
 	<surefire.version>2.18.1</surefire.version>
@@ -117,7 +117,7 @@ limitations under the License. -->
 	</dependency>
 	
 	<!-- SPRING SECURITY -->
-<!-- 	<dependency>
+	<dependency>
 		<groupId>org.springframework.security</groupId>
 		<artifactId>spring-security-core</artifactId>
 		<version>${spring.security.version}</version>
@@ -132,7 +132,7 @@ limitations under the License. -->
 		<artifactId>spring-security-config</artifactId>
 		<version>${spring.security.version}</version>
 	</dependency>
- -->	
+ 
 	<!-- CGLIB is required to process @Configuration classes -->
 	<dependency>
 		<groupId>cglib</groupId>
@@ -160,7 +160,14 @@ limitations under the License. -->
 		<version>1</version>
 	</dependency>
  
-	 <!-- Logging -->
+ 	<!-- CORS Filter -->
+	 <dependency>
+	  <groupId>com.thetransactioncompany</groupId>
+	  <artifactId>cors-filter</artifactId>
+	  <version>2.2.1</version>
+	</dependency>
+	
+	<!-- Logging -->
 	<dependency>
 		<groupId>org.slf4j</groupId>
 		<artifactId>slf4j-api</artifactId>
@@ -202,6 +209,7 @@ limitations under the License. -->
 		</exclusions>
 		<scope>runtime</scope>
 	</dependency>
+		
 		
 	<!-- Test -->
 	<dependency>

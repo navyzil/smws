@@ -98,10 +98,4 @@ limitations under the License. -->
 			p:username="${db.username}"
 			p:password="${db.password}"/>
 	  
-	
-	<!-- <jdbc:initialize-database data-source="dataSource">
-		<jdbc:script location="classpath:/sql/initializePlayerTable.sql"/>
-		<jdbc:script location="classpath:/sql/initializeCharacterTable.sql"/>
-		<jdbc:script location="classpath:/sql/initializePlayer_CharacterTable.sql"/>
-	</jdbc:initialize-database>
- --></beans>
+</beans>

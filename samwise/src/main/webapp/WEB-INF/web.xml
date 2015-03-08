@@ -46,8 +46,10 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
  		</param-value> 	
   </context-param>
   
-  <!-- SPRING SECURITY -->
-<!--   <filter>
+  <!-- Filter declaration for Spring Security -->
+  <!-- Uncomment this if the application needs this feature -->
+<!--   
+  <filter>
   	<filter-name>springSecurityFilterChain</filter-name>
   	<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
   </filter>
@@ -55,5 +57,50 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
   <filter-mapping>
   	<filter-name>springSecurityFilterChain</filter-name>
   	<url-pattern>/*</url-pattern>
-  </filter-mapping>-->
+  </filter-mapping>
+-->
+  
+ <!-- Filter declaration for CORS settings --> 
+ 	<!-- Reference: http://stackoverflow.com/questions/24861416/enable-cors-for-all-apis-with-spring-mvc-->
+ 	<!-- You can modify your CORS settings below.	
+ 		 For full documentation of CORS, please see this link: http://www.w3.org/TR/cors/-->
+	<filter>
+	<filter-name>CORS</filter-name>
+	<filter-class>com.thetransactioncompany.cors.CORSFilter</filter-class>
+	
+	<init-param>
+	    <param-name>cors.allowGenericHttpRequests</param-name>
+	    <param-value>true</param-value>
+	</init-param>
+	
+	<init-param>
+	    <param-name>cors.allowOrigin</param-name>
+	    <param-value>*</param-value>
+	</init-param>
+	
+	<init-param>
+	    <param-name>cors.allowSubdomains</param-name>
+	    <param-value>false</param-value>
+	</init-param>
+	
+	<init-param>
+	    <param-name>cors.supportedMethods</param-name>
+	    <param-value>GET, HEAD, POST, PUT, DELETE, OPTIONS</param-value>
+	</init-param>
+	
+	<init-param>
+	    <param-name>cors.supportedHeaders</param-name>
+	    <param-value>*</param-value>
+	</init-param>
+	
+	<init-param>
+	    <param-name>cors.supportsCredentials</param-name>
+	    <param-value>true</param-value>
+	</init-param>
+	
+	<init-param>
+	    <param-name>cors.maxAge</param-name>
+	    <param-value>3600</param-value>
+	</init-param>   
+	</filter>
 </web-app>
