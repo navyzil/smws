@@ -1,8 +1,11 @@
 *.project
 *.class
 *.classpath
+.classpath
+.metadata
 .settings/
 target/
 target/classes/
 target/surefire-reports/
 target/test-classes/
+
