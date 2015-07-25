@@ -1,4 +1,4 @@
-package com.zil.samwise.service;
+package com.zil.samwise.demo.service;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.zil.samwise.dao.CharacterDao;
-import com.zil.samwise.model.Character;
+import com.zil.samwise.demo.dao.CharacterDao;
+import com.zil.samwise.demo.model.Character;
 
 @Service
 public class CharacterService {
@@ -25,6 +25,15 @@ public class CharacterService {
 		LOGGER.debug("Service-showAllCharacters");
 		return characterDao.showAllCharacters();
 
+	}
+
+	@Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
+	public boolean createCharacter(Character character) {
+		return characterDao.createCharacter(character);
+	}
+
+	public Character showCharacter(Integer characterTableId) {
+		return characterDao.showCharacter(characterTableId);
 	}
 
 }

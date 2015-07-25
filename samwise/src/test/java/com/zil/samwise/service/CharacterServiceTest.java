@@ -2,30 +2,62 @@ package com.zil.samwise.service;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 
 import java.util.List;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
 
-import com.zil.samwise.model.Character;
+import com.zil.samwise.test.impl.MasterTestImpl;
+import com.zil.samwise.demo.model.Character;
+import com.zil.samwise.demo.service.CharacterService;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:/applicationContext.xml")
-@TransactionConfiguration(defaultRollback=true)
-public class CharacterServiceTest {
+public class CharacterServiceTest extends MasterTestImpl{
 
 	@Autowired
 	CharacterService characterService;
 	
+	@Override
+	public void doSetup() {
+		Character character = new Character();
+		character.setCharacterId("Char0001");
+		character.setCharacterLevel("1");
+		character.setCharacterName("Character Abc");
+		
+		boolean isInserted = characterService.createCharacter(character);
+		assertThat(isInserted, is(true));
+	}
+	
 	@Test
-	public void listAllCharacters() {
+	public void listAllCharactersTest() {
 		List<Character> showAllCharacters = characterService.showAllCharacters();
-		assertThat(showAllCharacters, empty());
+		assertThat(showAllCharacters, not(empty()));
+	}
+	
+	@Test
+	public void createCharacterTest(){
+		Character character = new Character();
+		character.setCharacterId("Char0002");
+		character.setCharacterLevel("1");
+		character.setCharacterName("Character Abc");
+		
+		boolean isInserted = characterService.createCharacter(character);
+		assertThat(isInserted, is(true));
+	}
+
+	@Test
+	public void retrieveSingleCharacterTest(){
+		List<Character> showAllCharacters = characterService.showAllCharacters();
+		assertThat(showAllCharacters, not(empty()));
+
+		Character character = showAllCharacters.get(0);
+		String expectedCharacterId = character.getCharacterId();
+		
+		Character actualCharacter = characterService.showCharacter(character.getId());
+		String actualCharacterId = actualCharacter.getCharacterId();
+		assertThat(actualCharacterId, is(expectedCharacterId));
 	}
 
 }
