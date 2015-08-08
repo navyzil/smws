@@ -28,13 +28,12 @@
 		<label>Parameter Name:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Parameter Value:</label>
 	</div>
 	<div id="parameterNamesAndValues" name="parameterNamesAndValues">
-		<input type="text" name="apiAddress" id="apiAddress"><input type="text" name="apiAddress" id="apiAddress">
 	</div>
 </div>
 
 <div>
-	<button id="addParameter" onclick="addParammeter();">Add Parameter</button>
-	<button id="removeParameter" onclick="removeParammeter();">Remove Parameter</button>
+	<button id="addParameter" onclick="addParameter();">Add Parameter</button>
+	<button id="removeParameter" onclick="removeParameter();">Remove Parameter</button>
 </div>
 <br/>
 <div id="apiExecution">

@@ -22,6 +22,30 @@ $(function(){
 	
 });
 
+function addParameter(){
+		var htmlText='<input type="text" name="parameterName'+parameterCount+'" id="parameterName'+parameterCount+'">' +
+		'<input type="text" name="parameterValue'+parameterCount+'" id="parameterValue'+parameterCount+'">' +
+		'<br id="parameterBreakCount'+parameterCount+'" name="parameterBreakCount'+parameterCount+'"/>';
+		$("#parameterNamesAndValues").append(htmlText);
+		parameterCount++;
+}
+
+function removeParameter(){
+	if(parameterCount>=0){
+		parameterCount--;		
+
+		var parameterName = "#parameterName"+parameterCount;
+		var parameterValue = "#parameterValue"+parameterCount;
+		var parameterBreakCount = "#parameterBreakCount"+parameterCount;
+
+		$(parameterName).remove();
+		$(parameterValue).remove();
+		$(parameterBreakCount).remove();
+		
+	}
+
+}
+
 function runApi(){
 	var ipAddress = $("#ipAddress").val();
 	var port = $("#port").val();
@@ -29,15 +53,31 @@ function runApi(){
 	var urlValue = "http://"+ipAddress+":"+port+"/seraphim/api/"+apiAddress;	
 	var httpType = $("#httpType").val();
 	
-	executeAjax(httpType, urlValue);
+	var data="";//var data={};
+	for(i=0; i < parameterCount; i++){
+		if(i === 0){
+			data = "?";
+		}
+		var parameterName = $("#parameterName"+i).val();
+		var parameterValue = $("#parameterValue"+i).val();
+		
+		alert("parameterName:"+parameterName+" parameterValue:"+parameterValue);
+		//data[parameterName]=parameterValue;
+		data+=parameterName+"="+parameterValue;
+		if(i < (parameterCount-1)){
+			data+="&";
+		}
+	}
+	executeAjax(httpType, urlValue, data);
 }
 
-function executeAjax(httpType, urlValue){
+function executeAjax(httpType, urlValue, data){
 	
 	jQuery.ajax({
         type: httpType,
-        url: urlValue,
-        contentType: "application/json; charset=utf-8",
+        url: urlValue+data,
+        contentType: "application/json; charset=utf-8",//"application/x-www-form-urlencoded; charset=utf-8",//"application/json; charset=utf-8",
+        //data: JSON.stringify(data),
         dataType: "json",
         success: function (data, status, jqXHR) {
             // do something
