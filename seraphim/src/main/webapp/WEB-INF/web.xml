@@ -18,7 +18,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
 					http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 					
-  <display-name>Project Samwise</display-name>
+  <display-name>Seraphim v1.0</display-name>
   <welcome-file-list>
 	<welcome-file>index.jsp</welcome-file>
 </welcome-file-list>
@@ -85,7 +85,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
 	
 	<init-param>
 	    <param-name>cors.supportedMethods</param-name>
-	    <param-value>GET, HEAD, POST, PUT, DELETE, OPTIONS</param-value>
+	    <param-value>GET, POST, PUT, DELETE</param-value>
 	</init-param>
 	
 	<init-param>
