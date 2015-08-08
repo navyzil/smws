@@ -1,6 +1,26 @@
+<!-- 
+Copyright 2014 Denzil Gideon M. Daulo
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+@author: Denzil Gideon M. Daulo
+@since: ver 1.0
+ -->
+
 <html>
 <head>
 <script type="text/javascript" src="js/jquery/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/jquery-elastic-1.6.10/jquery.elastic.source.js"></script>
+<script type="text/javascript" src="js/jquery.autogrowtextarea.js"></script>
 <script type="text/javascript" src="js/seraphim-ui-behavior.js"></script>
 </head>
 <body>
@@ -21,23 +41,34 @@
 	</select>
 </div>
 <br/>
-<div>
-	<label>Parameters (optional):</label>
-	<br/>
-	<div id="parameterLabel" name="parameterLabel">
-		<label>Parameter Name:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Parameter Value:</label>
-	</div>
-	<div id="parameterNamesAndValues" name="parameterNamesAndValues">
-	</div>
-</div>
 
 <div>
-	<button id="addParameter" onclick="addParameter();">Add Parameter</button>
-	<button id="removeParameter" onclick="removeParameter();">Remove Parameter</button>
-</div>
-<br/>
-<div id="apiExecution">
-	<button id="executeApi" name="executeApi" onclick="runApi();">Run Api</button>
-</div>
+	<table>
+		<tr>
+			<td style="width: 750px;">
+				<label>Parameters (optional):</label>
+				<div id="parameterLabel" name="parameterLabel">
+						<label>Parameter Name:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Parameter Value:</label>
+					</div>
+					<div id="parameterNamesAndValues" name="parameterNamesAndValues">
+					</div>
+				</div>
+				
+				<div>
+					<button id="addParameter" onclick="addParameter();">Add Parameter</button>
+					<button id="removeParameter" onclick="removeParameter();">Remove Parameter</button>
+				</div>
+				<br/>
+				<div id="apiExecution">
+					<button id="executeApi" name="executeApi" onclick="runApi();">Run Api</button>
+				</div>
+			</td>
+			<td>
+				<div id="transactionOutput" name="transactionOutput" style="width:750; height:250">
+					
+				</div>
+			</td>
+		</tr>
+	</table>
 </body>
 </html>

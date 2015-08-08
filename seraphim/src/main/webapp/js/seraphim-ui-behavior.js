@@ -41,7 +41,6 @@ function removeParameter(){
 		$(parameterName).remove();
 		$(parameterValue).remove();
 		$(parameterBreakCount).remove();
-		
 	}
 
 }
@@ -52,7 +51,12 @@ function runApi(){
 	var apiAddress = $("#apiAddress").val();
 	var urlValue = "http://"+ipAddress+":"+port+"/seraphim/api/"+apiAddress;	
 	var httpType = $("#httpType").val();
+	var parameters=parseParameters();
 	
+	executeAjax(httpType, urlValue, parameters);
+}
+
+function parseParameters(){
 	var data="";//var data={};
 	for(i=0; i < parameterCount; i++){
 		if(i === 0){
@@ -68,25 +72,85 @@ function runApi(){
 			data+="&";
 		}
 	}
-	executeAjax(httpType, urlValue, data);
+	return data;
 }
 
-function executeAjax(httpType, urlValue, data){
+function executeAjax(httpType, urlValue, parameters){
 	
 	jQuery.ajax({
         type: httpType,
-        url: urlValue+data,
+        url: urlValue+parameters,
         contentType: "application/json; charset=utf-8",//"application/x-www-form-urlencoded; charset=utf-8",//"application/json; charset=utf-8",
         //data: JSON.stringify(data),
         dataType: "json",
-        success: function (data, status, jqXHR) {
-            // do something
-       	 alert("success");
+        success: function (data, status) {
+        	//success output
+        	$("#result").remove();
+        	var parsed_data = JSON.stringify(data);       	 	
+    		var htmlText=
+//    		'<div id="result">'+
+//    			'<label>Result:</label><br/>'+
+//    			'<label>STATUS:</label>&nbsp;&nbsp;&nbsp;'+status.toUpperCase()+'</status>'+
+//    			'<br/>'+
+//    			'<label>RESPONSE CODE:</label>'+
+//			 		200+
+//			 		'<br/>'+
+//			 		'<label>DATA OUTPUT:</label>'+
+//			 		'<br/>'+
+//			 		parsed_data+
+//			 "</div>";
+
+        		'<div id="result">'+
+        		'<label>Result:</label><br/>'+
+        		'<textarea id="textResult" readonly style="height: 100%; width: 100%;">'+
+    			
+    			'STATUS:&nbsp;&nbsp;&nbsp;'+status.toUpperCase()+
+    		
+    			'\nRESPONSE CODE: 200'+
+    			'\nDATA OUTPUT:'+
+			 		parsed_data+
+			 	"</textarea>"+
+		 		"</div>";
+
+    		$("#textResult").elastic();
+    		$("#transactionOutput").append(htmlText);
+
         },
 
-        error: function (jqXHR, status) {
+        error: function (data, status) {
             // error handler
-       	 alert("error");
+        	$("#result").remove();
+        	//var parsed_data = "<!-- "+JSON.stringify(data);    
+        	var parsed_data = JSON.stringify(data);     
+    		
+    		var htmlText=
+//        		'<div id="result">'+
+//        			'<label>Result:</label><br/>'+
+//        			'<label>STATUS:</label>&nbsp;&nbsp;&nbsp;'+status.toUpperCase()+'</status>'+
+//        			'<br/>'+
+//        			'<label>RESPONSE CODE:</label>'+
+//    			 		data.status+
+//    			 		'<br/>'+
+//    			 		'<label>DATA OUTPUT:</label>'+
+//    			 		'<br/>'+
+//    			 		parsed_data+
+//    			 "</div>";    	
+        		'<div id="result">'+
+        		'<label>Result:</label><br/>'+
+        		'<textarea id="textResult" readonly style="height: 100%; width: 100%;">'+
+    			
+    			'STATUS:&nbsp;&nbsp;&nbsp;'+status.toUpperCase()+
+    		
+    			'\nRESPONSE CODE: '+data.status+
+    			'\nDATA OUTPUT:'+
+			 		parsed_data+
+			 	"</textarea>"+
+		 		"</div>";
+
+    		$("#textResult").elastic();
+
+    		$("#transactionOutput").append(htmlText);
+
         }
 	 });
 }

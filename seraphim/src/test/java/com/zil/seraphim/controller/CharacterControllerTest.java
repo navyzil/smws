@@ -55,9 +55,13 @@ public class CharacterControllerTest extends MasterControllerTest{
 		String expectedCharacterId = character.getCharacterId();
 
 		Integer characterTableId = character.getId();
+		Map<String, String> requestParameters = new HashMap<String, String>();
+
+		requestParameters.put("id", characterTableId.toString());
 		
-		executeMockMvc("/character/{id}", HttpMethod.GET, characterTableId);
-		
+		setMediaType(MediaType.APPLICATION_JSON);
+		executeMockMvc("/character", HttpMethod.GET, requestParameters);
+
 		result = getResultAction();
 		result.andExpect(status().isOk());
 		

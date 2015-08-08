@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +29,13 @@ public class CharacterController {
 		return characterService.showAllCharacters();
 	}
 	
+	@RequestMapping(value="", method=RequestMethod.GET)
+	@ResponseBody
+	public Character showCharacter(@RequestParam("id") Integer characterTableId){//(@PathVariable("id") Integer characterTableId){
+		
+		return characterService.showCharacter(characterTableId);
+	}
+	
 	@RequestMapping(value="", method=RequestMethod.PUT)
 	@ResponseBody
 	public Boolean createNewCharacter(@RequestParam("characterId") String characterId,
@@ -44,11 +50,4 @@ public class CharacterController {
 		return characterService.createCharacter(character);
 	}
 	
-	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	@ResponseBody
-	public Character showCharacter(@PathVariable("id") Integer characterTableId){
-		
-		return characterService.showCharacter(characterTableId);
-	}
-
 }
