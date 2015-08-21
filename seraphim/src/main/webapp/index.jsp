@@ -22,12 +22,12 @@ limitations under the License.
 <script type="text/javascript" src="js/jquery-elastic-1.6.10/jquery.elastic.source.js"></script>
 <script type="text/javascript" src="js/jquery.autogrowtextarea.js"></script>
 <script type="text/javascript" src="js/seraphim-ui-behavior.js"></script>
+<link rel="stylesheet" type="text/css" href="css/seraphim.css"/>
 </head>
 <body>
 <h2>Welcome to Seraphim Engine (ver1.0-Michael)</h2>
 <div id="basicDetails">
 	<label>Enter IP Address (default:localhost):</label><input type="text" name="ipAddress" id="ipAddress" value="localhost">
-	<br>
 	<label>Enter Port (default:8080):</label><input type="text" name="port" id="port" value="8080">
 	<br>
 	<label>Enter Api:</label><input type="text" name="apiAddress" id="apiAddress">
@@ -48,27 +48,27 @@ limitations under the License.
 			<td style="width: 750px;">
 				<label>Parameters (optional):</label>
 				<div id="parameterLabel" name="parameterLabel">
-						<label>Parameter Name:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Parameter Value:</label>
-					</div>
-					<div id="parameterNamesAndValues" name="parameterNamesAndValues">
-					</div>
+					<label>Parameter Name:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Parameter Value:</label>
 				</div>
-				
+				<div id="parameterNamesAndValues" name="parameterNamesAndValues">
+				</div>				
 				<div>
-					<button id="addParameter" onclick="addParameter();">Add Parameter</button>
-					<button id="removeParameter" onclick="removeParameter();">Remove Parameter</button>
+					<button id="addParameter" onclick="addParameter();"><img id="plusImg" name="plusImg" alt="" src="assets/images/plus.png"></button>
+					<button id="removeParameter" onclick="removeParameter();"><img id="minusImg" name="minusImg" alt="" src="assets/images/minus.png"></button>
 				</div>
 				<br/>
 				<div id="apiExecution">
-					<button id="executeApi" name="executeApi" onclick="runApi();">Run Api</button>
-				</div>
-			</td>
-			<td>
-				<div id="transactionOutput" name="transactionOutput" style="width:750; height:250">
-					
+					<button id="executeApi" name="executeApi" onclick="runApi();"><img id="runImg" name="runImg" alt="" src="assets/images/runApi.png"></button>
 				</div>
 			</td>
 		</tr>
+		<tr>
+			<td>
+				<div id="transactionOutput" name="transactionOutput">	
+				</div>
+ 			</td>
+		</tr>
 	</table>
+</div>
 </body>
 </html>

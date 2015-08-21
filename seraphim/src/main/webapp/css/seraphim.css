@@ -1,0 +1,71 @@
+@CHARSET "ISO-8859-1";
+@font-face{
+	font-family: Lombardic;
+	src: url("../assets/fonts/Lombardic.ttf");
+	
+}
+body{
+	background-color: #003366;
+	background-image:url("../assets/images/seraphim_logo2.png");
+    background-attachment: fixed;
+    background-position: center; 
+    background-repeat: no-repeat;
+	
+}
+h2{
+	color: silver;
+	font-family:Lombardic;
+}
+label {
+	color: silver;
+	font-family:Lombardic;
+}
+button{
+	border: 0;
+	background: transparent;
+}
+
+#plusImg{
+	width: 35;
+	height: 35;	
+}
+#minusImg{
+	width: 35;
+	height: 35;	
+	
+}
+#runImg{
+	width: 100;
+	height: 35;	
+	
+}
+#closeImg{
+	width: 78;
+	height: 24;	
+	
+}
+#executeApi{
+/*display:       inline-block;
+padding:       5px 16px;
+background:    #073763 url('http://dabuttonfactory.com/button.png?w=1&h=31&bgt=gradient&bgc=6fa8dc&ebgc=073763') repeat-x;
+background:    -moz-linear-gradient(#6fa8dc, #073763);
+background:    -o-linear-gradient(#6fa8dc, #073763);
+background:    -webkit-linear-gradient(#6fa8dc, #073763);
+background:    linear-gradient(#6fa8dc, #073763);
+border:        1px solid #569;
+border-radius: 5px;
+box-shadow:    1px 1px 0 0 #444;
+color:         #fff;
+font:          normal 700 21px/1 "Calibri", sans-serif;
+text-align:    center;
+text-shadow:   1px 1px 0 #000;*/
+}
+#apiAddress{
+	width: 349;
+}
+#apiAddress{
+	width: 346;
+}
+[id*="parameterName"]{
+	/*width: 125;*/
+}

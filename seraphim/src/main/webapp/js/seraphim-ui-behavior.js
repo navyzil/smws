@@ -65,7 +65,7 @@ function parseParameters(){
 		var parameterName = $("#parameterName"+i).val();
 		var parameterValue = $("#parameterValue"+i).val();
 		
-		alert("parameterName:"+parameterName+" parameterValue:"+parameterValue);
+//		alert("parameterName:"+parameterName+" parameterValue:"+parameterValue);
 		//data[parameterName]=parameterValue;
 		data+=parameterName+"="+parameterValue;
 		if(i < (parameterCount-1)){
@@ -86,11 +86,12 @@ function executeAjax(httpType, urlValue, parameters){
         success: function (data, status) {
         	//success output
         	$("#result").remove();
-        	var parsed_data = JSON.stringify(data);       	 	
+        	var parsed_data = JSON.stringify(data); 
+        	parsed_data=parsed_data.replace(/"/g, "");
     		var htmlText=
 //    		'<div id="result">'+
 //    			'<label>Result:</label><br/>'+
-//    			'<label>STATUS:</label>&nbsp;&nbsp;&nbsp;'+status.toUpperCase()+'</status>'+
+//    			'<label>STATUS:</label>&nbsp;&nbsp;&nbsp;'+status.toUpperCase()+'</label>'+
 //    			'<br/>'+
 //    			'<label>RESPONSE CODE:</label>'+
 //			 		200+
@@ -102,7 +103,7 @@ function executeAjax(httpType, urlValue, parameters){
 
         		'<div id="result">'+
         		'<label>Result:</label><br/>'+
-        		'<textarea id="textResult" readonly style="height: 100%; width: 100%;">'+
+        		'<textarea id="textResult" readonly style="height: 250; width: 750;">'+
     			
     			'STATUS:&nbsp;&nbsp;&nbsp;'+status.toUpperCase()+
     		
@@ -110,9 +111,14 @@ function executeAjax(httpType, urlValue, parameters){
     			'\nDATA OUTPUT:'+
 			 		parsed_data+
 			 	"</textarea>"+
+			 	'<button id="closeResult" name="closeResult" onclick="closeWindow();"><img id="closeImg" name="closeImg" alt="" src="assets/images/close.png"></button>'+
 		 		"</div>";
-
-    		$("#textResult").elastic();
+//    			'<jsp:include page="result.jsp"></jsp:include>';
+//    			"<iframe id='result' name='result' width='750' height='250' frameborder='0' src='results.jsp?status="+status.toUpperCase()+
+//    			"&responseCode=200"+
+//    			"&data="+parsed_data+
+//    			"'></iframe>";
+//    		$("#textResult").elastic();
     		$("#transactionOutput").append(htmlText);
 
         },
@@ -122,7 +128,7 @@ function executeAjax(httpType, urlValue, parameters){
         	$("#result").remove();
         	//var parsed_data = "<!-- "+JSON.stringify(data);    
         	var parsed_data = JSON.stringify(data);     
-    		
+        	parsed_data=parsed_data.replace(/"/g, "");
     		var htmlText=
 //        		'<div id="result">'+
 //        			'<label>Result:</label><br/>'+
@@ -135,9 +141,9 @@ function executeAjax(httpType, urlValue, parameters){
 //    			 		'<br/>'+
 //    			 		parsed_data+
 //    			 "</div>";    	
-        		'<div id="result">'+
+        		'<div id="result" width="750" height="250">'+
         		'<label>Result:</label><br/>'+
-        		'<textarea id="textResult" readonly style="height: 100%; width: 100%;">'+
+        		'<textarea id="textResult" readonly style="height: 250; width: 750;">'+
     			
     			'STATUS:&nbsp;&nbsp;&nbsp;'+status.toUpperCase()+
     		
@@ -145,13 +151,21 @@ function executeAjax(httpType, urlValue, parameters){
     			'\nDATA OUTPUT:'+
 			 		parsed_data+
 			 	"</textarea>"+
+			 	'<button id="closeResult" name="closeResult" onclick="closeWindow();"><img id="closeImg" name="closeImg" alt="" src="assets/images/close.png"></button>'+
 		 		"</div>";
 
-    		$("#textResult").elastic();
+//    		$("#textResult").elastic();
+//    			'<iframe id="result" name="result" width="750" height="250" frameborder="0" src="results.jsp?status='+status.toUpperCase()+
+//    			'&responseCode='+data.status+
+//    			'&data='+parsed_data+
+//    			'"></iframe>';
 
     		$("#transactionOutput").append(htmlText);
-
         }
 	 });
+}
+
+function closeWindow(){
+	$("#result").remove();	
 }
 
