@@ -23,10 +23,18 @@ $(function(){
 });
 
 function addParameter(){
-		var htmlText='<input type="text" name="parameterName'+parameterCount+'" id="parameterName'+parameterCount+'">' +
-		'<input type="text" name="parameterValue'+parameterCount+'" id="parameterValue'+parameterCount+'">' +
-		'<br id="parameterBreakCount'+parameterCount+'" name="parameterBreakCount'+parameterCount+'"/>';
-		$("#parameterNamesAndValues").append(htmlText);
+		var htmlText=
+		'<tr id="parameterRow'+parameterCount+'" name="parameterRow'+parameterCount+'">'+
+			'<td style="width: 175px;">'+
+				'<input type="text" name="parameterName'+parameterCount+'" id="parameterName'+parameterCount+'">' +
+			'</td>'+
+			'<td style="width: 175px;">'+
+				'<input type="text" name="parameterValue'+parameterCount+'" id="parameterValue'+parameterCount+'">' +
+			'</td>'+
+		'</tr>';
+//		'<br id="parameterBreakCount'+parameterCount+'" name="parameterBreakCount'+parameterCount+'"/>';
+//		$("#parameterNamesAndValues").append(htmlText);
+		$("#parameterTable").append(htmlText);
 		parameterCount++;
 }
 
@@ -36,11 +44,14 @@ function removeParameter(){
 
 		var parameterName = "#parameterName"+parameterCount;
 		var parameterValue = "#parameterValue"+parameterCount;
-		var parameterBreakCount = "#parameterBreakCount"+parameterCount;
+//		var parameterBreakCount = "#parameterBreakCount"+parameterCount;
+		var parameterRow = "#parameterRow"+parameterCount;
 
 		$(parameterName).remove();
 		$(parameterValue).remove();
-		$(parameterBreakCount).remove();
+//		$(parameterBreakCount).remove();
+		$(parameterRow).remove();
+
 	}
 
 }

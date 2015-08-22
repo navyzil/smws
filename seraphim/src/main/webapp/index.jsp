@@ -48,11 +48,23 @@ limitations under the License.
 			<td style="width: 750px;">
 				<label>Parameters (optional):</label>
 				<div id="parameterLabel" name="parameterLabel">
-					<label>Parameter Name:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Parameter Value:</label>
+<!-- 					<label>Parameter Name:</label>&nbsp;&nbsp;<label>Parameter Value:</label>
+ -->				<table>
+					<tr>
+						<td style="width: 175px;">
+							<label>Parameter Name:</label>
+						</td>
+						<td style="width: 175px;">
+							<label>Parameter Value:</label>
+						</td>
+					</tr>
+				</table>
 				</div>
 				<div id="parameterNamesAndValues" name="parameterNamesAndValues">
 				</div>				
 				<div>
+					<table id="parameterTable" name="parameterTable">
+					</table>
 					<button id="addParameter" onclick="addParameter();"><img id="plusImg" name="plusImg" alt="" src="assets/images/plus.png"></button>
 					<button id="removeParameter" onclick="removeParameter();"><img id="minusImg" name="minusImg" alt="" src="assets/images/minus.png"></button>
 				</div>

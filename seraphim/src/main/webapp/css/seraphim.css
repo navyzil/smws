@@ -63,9 +63,12 @@ text-shadow:   1px 1px 0 #000;*/
 #apiAddress{
 	width: 349;
 }
-#apiAddress{
+/*#apiAddress{
 	width: 346;
-}
+}*/
 [id*="parameterName"]{
-	/*width: 125;*/
+	width: 100%;
+}
+[id*="parameterValue"]{
+	width: 100%;
 }
